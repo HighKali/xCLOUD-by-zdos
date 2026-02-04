@@ -1,90 +1,136 @@
-<img src="./b24devhub-header.png" alt="Bitrix24 Developer Hub" width="1195"/>
+🚀 Bitrix24 · Enterprise Fork
+![License](LICENSE)
+![Status]()
+![CloudX]()
+![Blockchain Ready]()
+![Made for ZDOS]()
 
-Welcome to the central hub for Bitrix24 developer tools. This repository offers a curated collection of official SDKs, UI kits, examples, and application templates to streamline your development process with the Bitrix24 platform.
+Un fork avanzato di Bitrix24, ottimizzato per ambienti moderni, integrabile con sistemi blockchain e progettato per essere parte del CloudX Business Layer.
 
-## 📚 Table of Contents
-
-- [SDKs and Libraries](#sdks-and-libraries)
-  - [PHP SDK](#php-sdk)
-  - [JavaScript/Node.js SDK](#javascriptnodejs-sdk)
-  - [Python SDK](#python-sdk)
-- [UI Tools](#ui-tools)
-  - [Bitrix24 UI Kit](#bitrix24-ui-kit)
-  - [Design Tokens](#design-tokens)
-  - [Icons](#icons)
-- [Usage Examples](#usage-examples)
-- [Application Templates](#application-templates)
-  - [Automation rules library](#automation-rules-library)
-- [Documentation](#documentation)
-
-## SDKs and Libraries
-
-### PHP SDK
-
-- **b24phpsdk**: The official PHP library for interacting with the Bitrix24 REST API. It supports both OAuth tokens and incoming webhooks, with features like automatic token renewal and offline queues.
-
-  [GitHub Repository](https://github.com/bitrix24/b24phpsdk). Find more details in the [documentation](https://apidocs.bitrix24.com/api-reference/b24phpsdk/index.html)
-
-### JavaScript/Node.js SDK
-
-- **b24jssdk**: The official JavaScript SDK for Bitrix24 REST API, compatible with both browser and Node.js environments. It supports modern JavaScript features and offers advantages over the traditional BX24.JS library.
-
-  [GitHub Repository](https://github.com/bitrix24/b24jssdk). Find more details in the [documentation](https://bitrix24.github.io/b24jssdk/)
-
-### Python SDK
-
-- **b24pydk**: The official Python library for interacting with the Bitrix24 REST API (beta version). It supports both OAuth tokens and incoming webhooks, with features like automatic token renewal and batch calls.
-
-  [GitHub Repository](https://github.com/bitrix24/b24pysdk). 
-  
-## UI Tools
-
-### Bitrix24 UI Kit
-
-- **b24ui**: A UI kit for developing web applications using the Bitrix24 REST API, built on NUXT & VUE. It provides a set of reusable components to accelerate development.
-
-  [GitHub Repository](https://github.com/bitrix24/b24ui). Find more details in the [documentation](https://bitrix24.github.io/b24ui/)
-
-### Design Tokens
-
-- **b24style**: Design tokens for Bitrix24 UI Kit. Provides the ability to create application interfaces that closely match the Bitrix24 user interface using Tailwind CSS utility classes. 
-
-  [GitHub Repository](https://github.com/bitrix24/b24style). Find more details in the [documentation](https://bitrix24.github.io/b24style/)
-
-### Icons
-
-- **b24icons**: The library contains SVG icons for use in the interfaces of both local and mass-market applications for Bitrix24.
-
-  [GitHub Repository](https://github.com/bitrix24/b24icons). Find more details in the [documentation](https://bitrix24.github.io/b24icons/)
-
-## Usage Examples
-
-- **b24sdk-examples**: A collection of examples demonstrating the usage of various Bitrix24 SDKs and tools in real-world scenarios.
-
-  [GitHub Repository](https://github.com/bitrix24/b24sdk-examples). Find more details in the [documentation](https://bitrix24.github.io/b24ui/)
-
-## Application Templates
-
-Ready-to-use application templates that can be deployed quickly using Docker. These templates provide a foundation for building custom business logic on top of Bitrix24.
-
-### Automation rules library
-
-[This project](https://github.com/bitrix24/app-template-automation-rules) is a fully deployable application template featuring a library of Bitrix24 automation rules. It’s designed to work both as a local solution and as a scalable application for the Bitrix24 Marketplace.
-
-You’re getting a complete package here: the frontend is built with the UI Kit and B24JsSDK, while the backend is set up so you can simply add your own automation rule implementations without having to dig into architectural complexities. No need to reinvent the wheel — just take the foundation and customize it to fit your needs. 
-
-## Documentation
-
-- **b24restdocs**: The official repository for Bitrix24 REST API documentation, offering comprehensive guides and references for developers.
-
-  [GitHub Repository](https://github.com/bitrix24/b24restdocs). Read [online version](https://apidocs.bitrix24.com/)
-
-## Additional Resources
-
-- **crest**: CRest is a minimalistic PHP library for calling Bitrix24 REST methods via webhooks and OAuth 2.0.
-
-  [GitHub Repository](https://github.com/bitrix-tools/crest)
+Questa versione mantiene la compatibilità con l’architettura originale, ma introduce un approccio più modulare, pulito e orientato all’automazione.
 
 ---
 
-This hub aims to simplify navigation through Bitrix24's development tools, enabling you to build robust integrations and applications efficiently.
+✨ Caratteristiche principali
+
+🔹 1. Compatibilità Bitrix24
+- CRM completo  
+- Gestione attività e progetti  
+- Calendari, gruppi di lavoro, pipeline  
+- Moduli aziendali standard  
+
+🔹 2. Enterprise Hardening
+- Struttura più pulita  
+- Separazione logica dei moduli  
+- Configurazioni centralizzate  
+- Miglioramenti per deploy CI/CD  
+
+🔹 3. Integrazione CloudX × ZDOS
+Questo fork è pensato per essere parte del tuo ecosistema:
+
+- CloudX Portal → accesso centralizzato  
+- ZDOS → automazioni e micro‑servizi  
+- DSN Wallet → identità e firma digitale  
+- xCLOUD → business layer modulare  
+
+🔹 4. Blockchain Ready (DSN)
+Supporto opzionale per:
+- registrazione eventi on‑chain  
+- audit trail distribuito  
+- firma digitale  
+- integrazione con smart contract aziendali  
+
+---
+
+🧩 Architettura
+
+`
+bitrix24-enterprise/
+│
+├── core/                # Moduli principali Bitrix24
+├── modules/             # Estensioni e plugin
+├── cloudx/              # Integrazioni con CloudX
+│   ├── dsn/             # Adapter blockchain DSN
+│   └── zdos/            # Automazioni e hooks
+├── config/              # Configurazioni centralizzate
+└── docs/                # Documentazione tecnica
+`
+
+---
+
+⚙️ Installazione
+
+1. Clona il repository
+`bash
+git clone https://github.com/high-cde/bitrix24-enterprise.git
+cd bitrix24-enterprise
+`
+
+2. Installa dipendenze
+`bash
+composer install
+npm install
+`
+
+3. Configura l’ambiente
+`bash
+cp .env.example .env
+`
+
+Modifica i parametri necessari:
+- database  
+- URL  
+- DSN blockchain (opzionale)  
+
+---
+
+🔗 Integrazioni Ecosistema
+
+🌐 CloudX Portal
+Accesso centralizzato:  
+https://x-zdos.it
+
+🧠 ZDOS Automations
+Micro‑servizi e workflow:  
+https://x-zdos.it/zdos
+
+💳 DSN Wallet
+Identità digitale e firma:  
+https://wallet.x-zdos.it
+
+---
+
+🛠️ Comandi Git utili
+
+`bash
+git add .
+git commit -m "Update"
+git push
+`
+
+Per creare un branch:
+`bash
+git checkout -b feature/nome-feature
+`
+
+---
+
+📄 Licenza
+Distribuito sotto licenza MIT.
+
+---
+
+🤝 Contributi
+Pull request e fork sono benvenuti.  
+Per integrazioni avanzate con CloudX × ZDOS, contattare l’amministratore del progetto.
+
+---
+
+🧬 Roadmap
+- [ ] Modulo CRM potenziato  
+- [ ] Dashboard CloudX unificata  
+- [ ] DSN Smart Contract Registry  
+- [ ] Automazioni ZDOS integrate  
+- [ ] UI rinnovata in stile neon‑minimal  
+
+
