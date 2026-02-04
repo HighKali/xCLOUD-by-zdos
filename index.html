@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>xCLOUD · CloudX Portal · Enterprise</title>
+  <title>xCLOUD · CloudX Portal · Enterprise Premium</title>
   <meta name="description" content="xCLOUD by ZDOS — Business Layer enterprise, DSN/Blockchain ready, modular CRM & portal." />
   <meta name="theme-color" content="#000000" />
   <style>
@@ -11,100 +11,278 @@
       --bg:#050509; --panel:#0b0b11; --accent:#00eaff; --accent-2:#00c7d6;
       --muted:#9aa0b2; --text:#eaf6ff; --glass:#0b0b14; --danger:#ff5e5b;
       --radius:12px;
+      --text-soft:#a0a0b0; --text-main:#f5f5f5;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
       background: radial-gradient(circle at 10% 10%, #0f1724 0%, #050509 45%, #000 100%);
-      color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       -webkit-tap-highlight-color:transparent;
+      overflow-x:hidden;
     }
 
-    /* Layout */
     .wrap{max-width:1200px;margin:0 auto;padding:24px}
     header.topbar{
       position:fixed;left:0;right:0;top:0;height:64px;padding:10px 28px;
       display:flex;align-items:center;justify-content:space-between;gap:12px;
-      background:linear-gradient(180deg, rgba(5,5,9,0.6), rgba(5,5,9,0.35));
-      border-bottom:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(8px);z-index:60;
+      background:linear-gradient(180deg, rgba(5,5,9,0.8), rgba(5,5,9,0.45));
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      backdrop-filter:blur(10px);
+      z-index:60;
     }
     .brand{display:flex;align-items:center;gap:12px}
-    .brand-mark{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#00eaff,#004b66);box-shadow:0 0 18px #00eaff33}
-    .brand-title{font-weight:700;letter-spacing:0.08em;color:var(--accent)}
+    .brand-mark{
+      width:36px;height:36px;border-radius:8px;
+      background:radial-gradient(circle at 30% 20%,#00eaff,#004b66 60%,#000 100%);
+      box-shadow:0 0 18px #00eaff55;
+    }
+    .brand-title{font-weight:700;letter-spacing:0.08em;color:var(--accent);text-transform:uppercase;font-size:14px}
     nav.topnav{display:flex;gap:10px;align-items:center}
-    nav.topnav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:999px;font-size:13px}
-    nav.topnav a.primary{background:rgba(0,234,255,0.06);color:var(--accent);box-shadow:0 0 10px #00eaff22}
+    nav.topnav a{
+      color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:999px;
+      font-size:13px;border:1px solid transparent;transition:0.18s ease;
+    }
+    nav.topnav a:hover{border-color:rgba(255,255,255,0.08);color:var(--accent);background:rgba(0,0,0,0.4)}
+    nav.topnav a.primary{
+      background:rgba(0,234,255,0.08);color:var(--accent);
+      box-shadow:0 0 10px #00eaff33;border-color:rgba(0,234,255,0.25);
+    }
     .actions{display:flex;gap:8px;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);
+      background:transparent;color:var(--muted);font-size:12px;font-weight:600;
+      cursor:pointer;text-decoration:none;transition:0.18s ease;
+    }
+    .btn:hover{border-color:rgba(255,255,255,0.18);color:var(--accent)}
 
-    /* Hero */
     .hero{padding-top:110px;text-align:center;margin-bottom:18px}
-    .hero h1{font-size:36px;margin:6px 0;color:var(--accent);text-shadow:0 0 12px #00eaff33}
-    .hero p{color:var(--muted);max-width:820px;margin:0 auto 18px;line-height:1.5}
-
+    .hero h1{
+      font-size:34px;margin:6px 0;color:var(--accent);
+      text-shadow:0 0 14px #00eaff55;letter-spacing:0.06em;text-transform:uppercase;
+    }
+    .hero p{
+      color:var(--muted);max-width:820px;margin:0 auto 18px;line-height:1.5;font-size:14px;
+    }
     .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);text-decoration:none;font-weight:600}
-    .btn.primary{background:var(--accent);color:#001;box-shadow:0 6px 30px #00eaff22}
-    .btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+    .btn.primary{
+      background:var(--accent);color:#001;border-color:transparent;
+      box-shadow:0 6px 30px #00eaff44;font-size:13px;
+    }
+    .btn.primary:hover{background:var(--accent-2);box-shadow:0 8px 36px #00eaff66}
+    .btn.ghost{background:transparent;color:var(--muted);border-color:rgba(255,255,255,0.08)}
+    .btn.ghost:hover{color:var(--accent);border-color:rgba(0,234,255,0.4)}
 
-    /* Social */
     .social-buttons{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-    .social-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.02);color:var(--muted);text-decoration:none;font-weight:700}
+    .social-btn{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
+      background:var(--glass);border:1px solid rgba(255,255,255,0.04);
+      color:var(--muted);text-decoration:none;font-weight:600;font-size:12px;
+      transition:0.18s ease;
+    }
     .social-btn svg{width:18px;height:18px;display:block}
+    .social-btn:hover{border-color:rgba(0,234,255,0.4);color:var(--accent);box-shadow:0 0 18px #00eaff33}
 
-    /* Desktop / Terminal */
-    .desktop{max-width:1100px;margin:28px auto;padding:18px;border-radius:16px;background:linear-gradient(180deg, rgba(0,234,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);box-shadow:0 10px 40px rgba(0,0,0,0.6)}
-    .desktop-title{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:10px}
-    .terminal-window{background:#050509;border-radius:12px;border:1px solid rgba(255,255,255,0.03);overflow:hidden}
-    .terminal-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:linear-gradient(180deg,#0b0b14,#07070a);border-bottom:1px solid rgba(255,255,255,0.02);font-size:12px;color:var(--muted)}
+    .desktop{
+      max-width:1100px;margin:28px auto 24px;padding:18px;border-radius:16px;
+      background:radial-gradient(circle at top left,rgba(0,234,255,0.08) 0,rgba(5,5,9,0.95) 55%);
+      border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 40px rgba(0,0,0,0.7);
+    }
+    .desktop-title{
+      font-size:12px;color:var(--muted);text-transform:uppercase;
+      letter-spacing:0.14em;margin-bottom:10px;
+    }
+    .terminal-window{
+      background:#050509;border-radius:12px;border:1px solid rgba(255,255,255,0.05);overflow:hidden;
+    }
+    .terminal-header{
+      display:flex;align-items:center;justify-content:space-between;padding:8px 12px;
+      background:linear-gradient(180deg,#0b0b14,#07070a);
+      border-bottom:1px solid rgba(255,255,255,0.06);font-size:12px;color:var(--muted);
+    }
     .term-dots{display:flex;gap:6px}
     .term-dot{width:10px;height:10px;border-radius:50%}
     .term-dot.red{background:#ff5f57}.term-dot.yellow{background:#febc2e}.term-dot.green{background:#28c840}
-    .terminal-body{padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,monospace;font-size:13px;color:var(--accent);min-height:260px;max-height:420px;overflow:auto;background:linear-gradient(180deg,#0f1724,#050509)}
+    .terminal-body{
+      padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,monospace;
+      font-size:13px;color:var(--accent);min-height:260px;max-height:420px;
+      overflow:auto;background:radial-gradient(circle at top,#101020 0,#050509 60%);
+    }
     .terminal-output{white-space:pre-wrap;color:#d0f6ff;margin-bottom:8px}
     .terminal-input-line{display:flex;align-items:center;gap:8px}
     .terminal-prompt{color:var(--accent-2);font-weight:700}
-    .terminal-input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:inherit;font-size:13px}
+    .terminal-input{
+      flex:1;background:transparent;border:none;outline:none;
+      color:var(--text-main);font-family:inherit;font-size:13px;
+    }
 
-    /* Nexus Button (enterprise) */
-    .nexus-wrapper{display:flex;justify-content:center;margin-top:18px}
-    .nexus-button{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:18px 36px;border-radius:999px;background:linear-gradient(90deg,#001 0%,#050509 100%);border:1px solid rgba(0,234,255,0.08);box-shadow:0 8px 40px rgba(0,234,255,0.06);text-decoration:none}
-    .nexus-core{position:absolute;inset:0;border-radius:999px;background:radial-gradient(circle at 30% 30%, rgba(0,234,255,0.06), transparent 40%);opacity:0;transition:opacity .25s}
+    .nexus-wrapper{display:flex;justify-content:center;margin-top:22px}
+    .nexus-button{
+      position:relative;display:inline-flex;align-items:center;justify-content:center;
+      padding:18px 36px;border-radius:999px;
+      background:linear-gradient(90deg,#001 0%,#050509 100%);
+      border:1px solid rgba(0,234,255,0.18);
+      box-shadow:0 8px 40px rgba(0,234,255,0.12);
+      text-decoration:none;overflow:hidden;cursor:pointer;
+      transition:0.22s ease;
+    }
+    .nexus-button:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 46px rgba(0,234,255,0.28);
+      border-color:rgba(0,234,255,0.45);
+    }
+    .nexus-core{
+      position:absolute;inset:0;border-radius:999px;
+      background:radial-gradient(circle at 30% 30%,rgba(0,234,255,0.16),transparent 55%);
+      opacity:0;transition:opacity .25s;
+    }
     .nexus-button:hover .nexus-core{opacity:1}
-    .nexus-label{position:relative;z-index:2;color:var(--accent);font-weight:800;letter-spacing:0.12em}
-    .portal-flash{position:fixed;inset:0;background:radial-gradient(circle at center,#00eaff,#000);z-index:9999;pointer-events:none}
+    .nexus-label{
+      position:relative;z-index:2;color:var(--accent);
+      font-weight:800;letter-spacing:0.16em;font-size:13px;text-transform:uppercase;
+      text-shadow:0 0 12px #00eaff88;
+    }
+    .portal-flash{
+      position:fixed;inset:0;
+      background:radial-gradient(circle at center,#00eaff,#000);
+      z-index:9999;pointer-events:none;opacity:0;
+    }
 
-    /* Admin toolbar & settings */
-    .admin-bar{position:fixed;right:18px;bottom:18px;background:linear-gradient(180deg,#07101a,#050509);border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:12px;display:flex;gap:8px;align-items:center;z-index:80}
-    .admin-btn{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:120}
+    .repo-card{
+      display:flex;justify-content:center;margin-top:26px;
+    }
+    .repo-card-inner{
+      width:100%;max-width:460px;padding:18px 20px;border-radius:16px;
+      background:linear-gradient(180deg,#0b0b14,#050509);
+      border:1px solid rgba(0,234,255,0.16);
+      box-shadow:0 0 26px rgba(0,234,255,0.14);
+      text-decoration:none;color:var(--text-main);
+      transition:0.22s ease;position:relative;overflow:hidden;
+    }
+    .repo-card-inner::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(120deg,transparent 0,rgba(0,234,255,0.12) 40%,transparent 80%);
+      opacity:0;transform:translateX(-40%);
+      transition:0.4s ease;
+    }
+    .repo-card-inner:hover::before{
+      opacity:1;transform:translateX(20%);
+    }
+    .repo-card-inner:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 34px rgba(0,234,255,0.32);
+      border-color:rgba(0,234,255,0.45);
+    }
+    .repo-card-header{
+      display:flex;align-items:center;gap:10px;font-weight:700;
+      color:var(--accent);margin-bottom:8px;font-size:13px;text-transform:uppercase;letter-spacing:0.12em;
+    }
+    .repo-dot{
+      width:10px;height:10px;background:var(--accent);
+      border-radius:50%;box-shadow:0 0 10px var(--accent);
+    }
+    .repo-card-body p{
+      margin:0;color:var(--text-soft);font-size:13px;
+    }
+    .repo-badges{
+      margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;
+    }
+    .badge{
+      padding:4px 10px;border-radius:999px;
+      background:rgba(0,234,255,0.08);
+      border:1px solid rgba(0,234,255,0.25);
+      font-size:10px;color:var(--accent);
+      text-transform:uppercase;letter-spacing:0.1em;
+    }
+
+    footer{
+      margin-top:28px;padding:28px;text-align:center;
+      color:var(--muted);font-size:12px;opacity:0.9;
+    }
+
+    .admin-bar{
+      position:fixed;right:18px;bottom:18px;
+      background:linear-gradient(180deg,#07101a,#050509);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:10px;border-radius:12px;
+      display:flex;gap:8px;align-items:center;z-index:80;
+      box-shadow:0 10px 30px rgba(0,0,0,0.7);
+    }
+    .admin-btn{
+      background:transparent;border:1px solid rgba(255,255,255,0.08);
+      padding:6px 10px;border-radius:8px;color:var(--muted);
+      cursor:pointer;font-size:11px;display:inline-flex;align-items:center;gap:4px;
+      transition:0.18s ease;
+    }
+    .admin-btn:hover{border-color:rgba(0,234,255,0.5);color:var(--accent)}
+
+    .modal{
+      position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+      background:rgba(0,0,0,0.7);z-index:120;
+    }
     .modal.open{display:flex}
-    .modal-card{width:720px;background:linear-gradient(180deg,#07101a,#050509);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
-    .form-row{display:flex;gap:8px;margin-bottom:10px}
-    .form-row input, .form-row select{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text)}
+    .modal-card{
+      width:720px;max-width:92%;
+      background:linear-gradient(180deg,#07101a,#050509);
+      border-radius:12px;padding:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 18px 50px rgba(0,0,0,0.8);
+    }
+    .form-row{
+      display:flex;gap:8px;margin-bottom:10px;align-items:center;
+    }
+    .form-row label{
+      min-width:120px;color:var(--muted);font-size:13px;
+    }
+    .form-row input,.form-row select{
+      flex:1;padding:8px 10px;border-radius:8px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:transparent;color:var(--text-main);font-size:13px;
+    }
 
-    /* Footer */
-    footer{margin-top:28px;padding:28px;text-align:center;color:var(--muted);font-size:13px}
+    #intro{
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+      background:#000;z-index:200;overflow:hidden;
+    }
+    #introText{
+      font-size:20px;color:var(--accent);
+      text-shadow:0 0 10px #00eaff88;
+      white-space:nowrap;overflow:hidden;
+      border-right:2px solid var(--accent);
+      width:0;
+      animation:typing 2.5s steps(30),blink 0.7s infinite;
+    }
+    @keyframes typing{from{width:0}to{width:280px}}
+    @keyframes blink{50%{border-color:transparent}}
+    .particle{
+      position:absolute;width:4px;height:4px;
+      background:var(--accent);border-radius:50%;
+      box-shadow:0 0 8px var(--accent);opacity:0;pointer-events:none;
+    }
 
-    /* Responsive */
     @media (max-width:900px){
       .wrap{padding:16px}
-      .modal-card{width:92%}
-      .hero h1{font-size:28px}
+      .hero h1{font-size:26px}
+      header.topbar{padding:8px 14px}
+      .brand-title{font-size:12px}
+      .actions{display:none}
     }
   </style>
 </head>
 <body>
-  <!-- Intro overlay -->
-  <div id="intro" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:200">
+  <div id="intro">
     <div style="text-align:center">
-      <div style="font-weight:800;color:var(--accent);font-size:20px;letter-spacing:0.12em">BOOTING xCLOUD ENTERPRISE</div>
-      <div style="height:12px"></div>
-      <div style="color:var(--muted)">Initializing modules · ZDOS · DSN · Wallet</div>
+      <div id="introText">BOOTING XCLOUD ENTERPRISE...</div>
+      <div style="height:10px"></div>
+      <div style="color:var(--muted);font-size:12px">Initializing modules · ZDOS · DSN · Wallet</div>
     </div>
   </div>
 
-  <!-- Topbar -->
   <header class="topbar" role="banner">
     <div class="brand">
       <div class="brand-mark" aria-hidden="true"></div>
@@ -122,8 +300,8 @@
     </nav>
 
     <div class="actions">
-      <a class="btn ghost" href="https://github.com/high-cde/xCLOUD-by-zdos.git" target="_blank" rel="noopener">Repo</a>
-      <button id="open-settings" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)">Settings</button>
+      <a class="btn" href="https://github.com/high-cde/xCLOUD-by-zdos" target="_blank" rel="noopener">Repo</a>
+      <button id="open-settings" class="btn">Settings</button>
     </div>
   </header>
 
@@ -140,20 +318,25 @@
         <a class="btn ghost" href="https://x-zdos.it/zdos" target="_blank" rel="noopener">Vai a ZDOS</a>
       </div>
 
-      <div class="social-buttons" aria-hidden="false">
+      <div class="social-buttons">
         <a class="social-btn" href="https://discord.gg/9fDdURTevG" target="_blank" rel="noopener">
-          <svg viewBox="0 0 245 240" aria-hidden="true" focusable="false"><path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/><path fill="#5865F2" d="M189.5 20h-134C24.6 20 0 44.6 0 75.5v89C0 195.4 24.6 220 55.5 220h113.1l-5.3-18.5 12.8 11.9 12.1 11.2 21.3 19V75.5C209.5 44.6 184.9 20 154 20zm-39.2 135s-3.7-4.4-6.8-8.3c13.5-3.8 18.6-12.1 18.6-12.1-4.2 2.7-8.2 4.6-11.8 5.9-5.1 2.1-10 3.5-14.8 4.3-9.8 1.8-18.8 1.3-26.6-.1-5.8-1.1-10.8-2.7-15-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-.1-.1-.2-.1-.3-.2-1.3-.7-2-1.2-2-1.2s5 8.1 18.2 12c-3.1 3.9-6.9 8.5-6.9 8.5-22.8-.7-31.5-15.7-31.5-15.7 0-33.3 14.9-60.3 14.9-60.3 14.9-11.2 29-10.9 29-10.9l1 1.2c-18.6 5.4-27.2 13.6-27.2 13.6s2.3-1.3 6.2-3.1c11.3-5 20.3-6.3 24-6.6.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-8.2-7.8-25.7-13.2l1.4-1.6s14.1-.3 29 10.9c0 0 14.9 27 14.9 60.3 0 0-8.8 15-31.6 15.7z"/></svg>
+          <svg viewBox="0 0 245 240" aria-hidden="true" focusable="false">
+            <path fill="#5865F2" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/>
+            <path fill="#5865F2" d="M189.5 20h-134C24.6 20 0 44.6 0 75.5v89C0 195.4 24.6 220 55.5 220h113.1l-5.3-18.5 12.8 11.9 12.1 11.2 21.3 19V75.5C209.5 44.6 184.9 20 154 20zm-39.2 135s-3.7-4.4-6.8-8.3c13.5-3.8 18.6-12.1 18.6-12.1-4.2 2.7-8.2 4.6-11.8 5.9-5.1 2.1-10 3.5-14.8 4.3-9.8 1.8-18.8 1.3-26.6-.1-5.8-1.1-10.8-2.7-15-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-.1-.1-.2-.1-.3-.2-1.3-.7-2-1.2-2-1.2s5 8.1 18.2 12c-3.1 3.9-6.9 8.5-6.9 8.5-22.8-.7-31.5-15.7-31.5-15.7 0-33.3 14.9-60.3 14.9-60.3 14.9-11.2 29-10.9 29-10.9l1 1.2c-18.6 5.4-27.2 13.6-27.2 13.6s2.3-1.3 6.2-3.1c11.3-5 20.3-6.3 24-6.6.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-8.2-7.8-25.7-13.2l1.4-1.6s14.1-.3 29 10.9c0 0 14.9 27 14.9 60.3 0 0-8.8 15-31.6 15.7z"/>
+          </svg>
           Discord
         </a>
 
         <a class="social-btn" href="https://ko-fi.com/highkali" target="_blank" rel="noopener">
-          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#FF5E5B" d="M50 10c-22.1 0-40 14.3-40 32s17.9 32 40 32 40-14.3 40-32-17.9-32-40-32z"/><path fill="#fff" d="M67 38c0 8.3-17 20-17 20S33 46.3 33 38c0-4.4 3.6-8 8-8 3.1 0 5.8 1.7 7 4.2C49.2 31.7 51.9 30 55 30c4.4 0 8 3.6 8 8z"/></svg>
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <path fill="#FF5E5B" d="M50 10c-22.1 0-40 14.3-40 32s17.9 32 40 32 40-14.3 40-32-17.9-32-40-32z"/>
+            <path fill="#fff" d="M67 38c0 8.3-17 20-17 20S33 46.3 33 38c0-4.4 3.6-8 8-8 3.1 0 5.8 1.7 7 4.2C49.2 31.7 51.9 30 55 30c4.4 0 8 3.6 8 8z"/>
+          </svg>
           Ko‑fi
         </a>
       </div>
     </section>
 
-    <!-- Desktop / Terminal -->
     <section class="desktop" id="modules" aria-labelledby="desktop-title">
       <div class="desktop-title" id="desktop-title">CloudX Desktop · Terminal Module</div>
 
@@ -169,61 +352,85 @@
         </div>
 
         <div class="terminal-body" id="terminal-body">
-          <div id="terminal-output" class="terminal-output">xCLOUD Terminal v1.0
+          <div id="terminal-output" class="terminal-output">
+xCLOUD Terminal v1.0
 Type "help" for available commands.
-</div>
+          </div>
 
-          <div class="terminal-input-line" aria-hidden="false">
+          <div class="terminal-input-line">
             <span class="terminal-prompt">cloudx@xdos:~$</span>
             <input id="terminal-input" class="terminal-input" autocomplete="off" aria-label="Terminal input" />
           </div>
         </div>
       </div>
 
-      <!-- Nexus Button -->
-      <div class="nexus-wrapper" aria-hidden="false">
+      <div class="nexus-wrapper">
         <a class="nexus-button" id="nexus" href="https://x-zdos.it" role="button" aria-label="Enter CloudX">
           <span class="nexus-core" aria-hidden="true"></span>
           <span class="nexus-label">ENTER CLOUDX</span>
         </a>
       </div>
+
+      <div class="repo-card">
+        <a href="https://github.com/high-cde/xCLOUD-by-zdos" target="_blank" class="repo-card-inner" rel="noopener">
+          <div class="repo-card-header">
+            <div class="repo-dot"></div>
+            <span>xCLOUD · Enterprise Repo</span>
+          </div>
+          <div class="repo-card-body">
+            <p>Fork potenziato · CloudX × ZDOS · DSN Ready · Business Layer modulare.</p>
+            <div class="repo-badges">
+              <span class="badge">MIT</span>
+              <span class="badge">Enterprise</span>
+              <span class="badge">Blockchain Ready</span>
+              <span class="badge">CloudX Native</span>
+            </div>
+          </div>
+        </a>
+      </div>
     </section>
 
     <footer>
-      xCLOUD · ZDOS Ecosystem · Enterprise Edition — Designed for auditability, modularity and DSN integration.
+      xCLOUD · ZDOS Ecosystem · Enterprise Premium — Auditabile, modulare, DSN‑ready.
     </footer>
   </main>
 
-  <!-- Admin floating toolbar -->
   <div class="admin-bar" role="toolbar" aria-label="Admin">
     <button class="admin-btn" id="btn-deploy">Deploy</button>
     <button class="admin-btn" id="btn-logs">Logs</button>
     <button class="admin-btn" id="btn-settings">Chain</button>
   </div>
 
-  <!-- Modal: Settings / Chain -->
   <div class="modal" id="modal-settings" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-card" role="document">
       <h3 style="margin:0 0 8px;color:var(--accent)">Impostazioni Blockchain</h3>
-      <div style="color:var(--muted);font-size:13px;margin-bottom:12px">Configura la rete DSN e i riferimenti aziendali.</div>
-
-      <div class="form-row">
-        <label style="min-width:120px;color:var(--muted);font-size:13px">Abilita</label>
-        <select id="chain-enabled"><option value="true">Sì</option><option value="false">No</option></select>
+      <div style="color:var(--muted);font-size:13px;margin-bottom:12px">
+        Configura la rete DSN e i riferimenti aziendali (salvati in locale per questa istanza).
       </div>
 
       <div class="form-row">
-        <label style="min-width:120px;color:var(--muted);font-size:13px">Rete</label>
-        <select id="chain-network"><option value="polygon">Polygon</option><option value="mumbai">Mumbai (test)</option></select>
+        <label>Abilita</label>
+        <select id="chain-enabled">
+          <option value="true">Sì</option>
+          <option value="false">No</option>
+        </select>
       </div>
 
       <div class="form-row">
-        <label style="min-width:120px;color:var(--muted);font-size:13px">RPC URL</label>
+        <label>Rete</label>
+        <select id="chain-network">
+          <option value="polygon">Polygon</option>
+          <option value="mumbai">Mumbai (test)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>RPC URL</label>
         <input id="chain-rpc" placeholder="https://polygon-rpc.com" />
       </div>
 
       <div class="form-row">
-        <label style="min-width:120px;color:var(--muted);font-size:13px">DSN Token</label>
+        <label>DSN Token</label>
         <input id="chain-token" placeholder="0x..." />
       </div>
 
@@ -235,9 +442,6 @@ Type "help" for available commands.
   </div>
 
   <script>
-    /* --- Enterprise JS: configuration + lightweight chain adapter --- */
-
-    // Default chain config (overridable via modal)
     const CHAIN_CONFIG = {
       enabled: true,
       network: "polygon",
@@ -247,19 +451,17 @@ Type "help" for available commands.
       businessRegistryAddress: ""
     };
 
-    // Persist config to localStorage (enterprise convenience)
     function loadChainConfig(){
       try{
         const raw = localStorage.getItem("xcloud_chain_config");
         if(raw){ Object.assign(CHAIN_CONFIG, JSON.parse(raw)); }
-      }catch(e){ console.warn("chain config load failed", e) }
+      }catch(e){}
     }
     function saveChainConfig(){
       try{ localStorage.setItem("xcloud_chain_config", JSON.stringify(CHAIN_CONFIG)); }catch(e){}
     }
     loadChainConfig();
 
-    // Minimal chain adapter: logs and prepares payload for future relayer/smart contract
     async function recordOnChain(eventType, payload){
       if(!CHAIN_CONFIG.enabled) return {ok:false, reason:"disabled"};
       const envelope = {
@@ -269,12 +471,9 @@ Type "help" for available commands.
         payload
       };
       console.log("[CHAIN ADAPTER]", envelope);
-      // In enterprise deployment: replace with relayer call or wallet signature flow
-      // Example: POST to internal relayer endpoint with authentication
       return {ok:true, envelope};
     }
 
-    /* --- Terminal commands --- */
     const termOut = document.getElementById("terminal-output");
     const termIn = document.getElementById("terminal-input");
 
@@ -314,7 +513,6 @@ Business layer, DSN-ready, modular CRM & workflows.`,
       body.scrollTop = body.scrollHeight;
     });
 
-    /* --- Nexus Button: portal effect + analytics ping --- */
     document.getElementById("nexus").addEventListener("click", function(e){
       e.preventDefault();
       const portal = document.createElement("div");
@@ -325,12 +523,10 @@ Business layer, DSN-ready, modular CRM & workflows.`,
         { opacity: 0, transform: "scale(0.2)" },
         { opacity: 1, transform: "scale(1.8)" },
         { opacity: 0, transform: "scale(3)" }
-      ], { duration: 700, easing: "ease-out" });
+      ], { duration: 700, easing: "ease-out", fill:"forwards" });
 
-      // Lightweight analytics event (console + local)
       try{
         const ev = {type:"nexus_click", ts:new Date().toISOString(), path:location.pathname};
-        console.log("[ANALYTICS]", ev);
         const a = JSON.parse(localStorage.getItem("xcloud_analytics")||"[]");
         a.push(ev); localStorage.setItem("xcloud_analytics", JSON.stringify(a));
       }catch(e){}
@@ -338,15 +534,52 @@ Business layer, DSN-ready, modular CRM & workflows.`,
       setTimeout(()=>{ window.location.href = this.href; }, 520);
     });
 
-    /* --- Intro removal and UI boot --- */
     window.addEventListener("load", () => {
-      setTimeout(()=> {
+      setTimeout(() => {
         const intro = document.getElementById("intro");
-        if(intro) intro.remove();
-      }, 1400);
+        const text = document.getElementById("introText");
+        const rect = text.getBoundingClientRect();
+
+        for (let i = 0; i < 60; i++) {
+          const p = document.createElement("div");
+          p.classList.add("particle");
+          document.body.appendChild(p);
+
+          p.style.left = rect.left + rect.width / 2 + "px";
+          p.style.top = rect.top + rect.height / 2 + "px";
+
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 80 + Math.random() * 120;
+          const x = Math.cos(angle) * distance;
+          const y = Math.sin(angle) * distance;
+
+          p.animate([
+            { transform: "translate(0,0)", opacity: 1 },
+            { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
+          ], {
+            duration: 900 + Math.random() * 400,
+            easing: "ease-out",
+            fill: "forwards"
+          });
+        }
+
+        text.style.opacity = 0;
+
+        setTimeout(() => {
+          intro.style.opacity = 0;
+          intro.style.transition = "opacity 0.8s ease";
+        }, 300);
+
+        setTimeout(() => {
+          intro.remove();
+        }, 1200);
+      }, 2200);
+
+      (async function demoRecord(){
+        await recordOnChain("PAGE_LOADED", {path: location.pathname, user: "anonymous"});
+      })();
     });
 
-    /* --- Admin modal controls --- */
     const modal = document.getElementById("modal-settings");
     document.getElementById("open-settings").addEventListener("click", () => {
       document.getElementById("chain-enabled").value = String(CHAIN_CONFIG.enabled);
@@ -355,7 +588,9 @@ Business layer, DSN-ready, modular CRM & workflows.`,
       document.getElementById("chain-token").value = CHAIN_CONFIG.dsnTokenAddress;
       modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
     });
-    document.getElementById("close-chain").addEventListener("click", () => { modal.classList.remove("open"); modal.setAttribute("aria-hidden","true"); });
+    document.getElementById("close-chain").addEventListener("click", () => {
+      modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
+    });
     document.getElementById("save-chain").addEventListener("click", () => {
       CHAIN_CONFIG.enabled = document.getElementById("chain-enabled").value === "true";
       CHAIN_CONFIG.network = document.getElementById("chain-network").value;
@@ -363,10 +598,9 @@ Business layer, DSN-ready, modular CRM & workflows.`,
       CHAIN_CONFIG.dsnTokenAddress = document.getElementById("chain-token").value || CHAIN_CONFIG.dsnTokenAddress;
       saveChainConfig();
       modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
-      alert("Configurazione blockchain salvata (local). Per deploy enterprise, sincronizza con il tuo relayer.");
+      alert("Configurazione blockchain salvata localmente. Per deploy enterprise, sincronizza con il tuo relayer.");
     });
 
-    /* Admin toolbar quick actions (placeholders) */
     document.getElementById("btn-deploy").addEventListener("click", () => {
       alert("Deploy triggered (simulazione). Integra CI/CD per deploy reale.");
     });
@@ -377,16 +611,6 @@ Business layer, DSN-ready, modular CRM & workflows.`,
     document.getElementById("btn-settings").addEventListener("click", () => {
       document.getElementById("open-settings").click();
     });
-
-    /* Accessibility: focus outlines for keyboard users */
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Tab") document.body.classList.add("show-focus");
-    });
-
-    /* Small helper: simulate server-side record on page load for audit trail demo */
-    (async function demoRecord(){
-      await recordOnChain("PAGE_LOADED", {path: location.pathname, user: "anonymous"});
-    })();
   </script>
 </body>
 </html>
