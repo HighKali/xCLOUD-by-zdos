@@ -1,11 +1,11 @@
-🚀 Bitrix24 · Enterprise Fork
+🚀 xCLOUD · Enterprise Fork
 ![License](LICENSE)
 ![Status]()
 ![CloudX]()
 ![Blockchain Ready]()
 ![Made for ZDOS]()
 
-Un fork avanzato di Bitrix24, ottimizzato per ambienti moderni, integrabile con sistemi blockchain e progettato per essere parte del CloudX Business Layer.
+Un fork avanzato di xCLOUD, ottimizzato per ambienti moderni, integrabile con sistemi blockchain e progettato per essere parte del CloudX Business Layer.
 
 Questa versione mantiene la compatibilità con l’architettura originale, ma introduce un approccio più modulare, pulito e orientato all’automazione.
 
@@ -13,7 +13,7 @@ Questa versione mantiene la compatibilità con l’architettura originale, ma in
 
 ✨ Caratteristiche principali
 
-🔹 1. Compatibilità Bitrix24
+🔹 1. Compatibilità xCLOUD
 - CRM completo  
 - Gestione attività e progetti  
 - Calendari, gruppi di lavoro, pipeline  
@@ -45,9 +45,9 @@ Supporto opzionale per:
 🧩 Architettura
 
 `
-bitrix24-enterprise/
+xCLOUD-enterprise/
 │
-├── core/                # Moduli principali Bitrix24
+├── core/                # Moduli principali xCLOUD
 ├── modules/             # Estensioni e plugin
 ├── cloudx/              # Integrazioni con CloudX
 │   ├── dsn/             # Adapter blockchain DSN
@@ -62,8 +62,8 @@ bitrix24-enterprise/
 
 1. Clona il repository
 `bash
-git clone https://github.com/high-cde/bitrix24-enterprise.git
-cd bitrix24-enterprise
+git clone https://github.com/high-cde/xCLOUD-enterprise.git
+cd xCLOUD-enterprise
 `
 
 2. Installa dipendenze
